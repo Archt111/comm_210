@@ -32,7 +32,7 @@ services:
       image: php:8.1.12RC1-fpm-alpine 
       container_name: data-box  
       volumes:  
-       - ./source/:/src_code/  
+       - ./:/src_code/  
       command: "true"
 
 
