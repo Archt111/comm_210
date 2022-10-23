@@ -1,6 +1,6 @@
 # comm_210
 I found the latest versions of php, nginx are very heavy, so I chose the lightest versions I found
-src.php is what you need to replace to your real code.
+You should remove the src.php with your php code under that name, due to all the configuration of nginx ( it uses index from src.php and src.html)
 
 What I learned:
 1.Tiny bits how to write php code
