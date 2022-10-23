@@ -1,0 +1,38 @@
+# Version without sql
+# Separate source code, instead of writing it into dockerfile like v2
+
+networks:
+  infra-network:
+    driver: bridge
+    
+services:
+  nginx:    
+      image: nginx:1.22-alpine  
+      container_name: nginx-box 
+      ports:  
+       - 8080:80   
+      volumes:  
+        - ./nginx.conf:/etc/nginx/conf.d/default.conf 
+      volumes_from:  
+        - data-storage  
+      networks: 
+        - infra-network
+
+  php:    
+    image: php:8.1.12RC1-fpm-alpine
+    container_name: php-box  
+    expose:  
+      - 9000  
+    volumes_from:  
+      - data-storage  
+    networks: 
+      - infra-network
+      
+  data-storage:    
+      image: php:8.1.12RC1-fpm-alpine 
+      container_name: data-box  
+      volumes:  
+       - ./source/:/src_code/  
+      command: "true"
+
+
